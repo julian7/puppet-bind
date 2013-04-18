@@ -1,0 +1,10 @@
+options {
+    directory "<%= @directory %>";
+    auth-nxdomain no;
+    <%- if @listen_on_v6 -%>
+    listen-on-v6 { <%= @listen_on_v6.join('; ')%>; };
+    <%- end -%>
+    <%- if @listen_on -%>
+    listen-on { <%= @listen_on.join('; ')%>; };
+    <%- end -%>
+};

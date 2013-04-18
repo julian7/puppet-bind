@@ -1,0 +1,7 @@
+<% @masters.each do |zone| -%>
+zone "<%= zone %>" { type master; file "<%= "#{mastersdir}/#{zone}" %>"; };
+<%- end -%>
+
+<%- @slaves.each do |zone, master| -%>
+zone "<%= zone %>" { type slave; file "<%= "#{slavesdir}/#{zone}" %>"; masters { <%= master.join('; ') %>; }; };
+<% end %>
